@@ -1,7 +1,5 @@
 from flask import Flask
 from flask import request
-from flask import jsonify
-
 
 app = Flask(__name__)
 
@@ -12,13 +10,7 @@ def generate_RSA():
             new_key = RSA.generate(2048)
             public_key = new_key.publickey().exportKey("PEM")
             private_key = new_key.exportKey("PEM")
-            return jsonify(
-
-                    Public_Key= public_key,
-
-                    Private_Key = private_key,
-
-                    )
+            return  '{} {}'.format(private_key,public_key)
 
 if __name__ == "__main__":
-    app.run(host ='0.0.0.0', port = 5000, debug = True)
+    app.run(host ='0.0.0.0', port = 5000, debug = True) 
